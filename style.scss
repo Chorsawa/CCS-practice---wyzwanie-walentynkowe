@@ -1,0 +1,87 @@
+$gap: 4vh;
+$padding: 4vh;
+
+$bp: (
+    mobile: 480px,
+    tablet: 768px,
+    desktop: 1440px,
+);
+
+@mixin query($display){
+    @each $key, $value in $bp{
+        @if($display == $key){
+            @media (max-width: $value){@content};
+        }
+    }
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    color: #550343;
+    background-color: #ffffff;
+    margin: 0 auto;
+}
+
+a{
+    color: #000000;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    gap: $gap
+}
+
+#block-2{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 10;
+    height: 60vh - $gap*2 - $padding*2;
+
+    @include query(tablet){
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+#block-1{
+    height: 60vh - $gap*2 - $padding*2;
+}
+
+#box-1{
+    padding: $padding;
+    flex-grow: 10;
+    border-radius: 25px;
+    margin: 10px;
+    border: 1px solid #FFC0CB;
+}
+
+#box-2{
+    background-color: #FFC0CB;
+    padding: $padding;
+    flex-grow: 5;
+    border-radius: 25px;
+    margin: 10px;
+}
+
+#box-3{
+    background-color: #ffb9e466;
+    padding: $padding;
+    flex-grow: 5;
+    border-radius: 25px;
+    margin: 10px;
+}
+
+#button{
+    color: #ffffff;
+    background-color: black;
+    border: none;
+    border-radius: 15px;
+    width: 80px;
+    height: 40px;
+}
